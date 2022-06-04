@@ -1,6 +1,6 @@
 import { Button, FlatList, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { List, ListHeader, ListItem } from './components/index';
 
-import { ListHeader } from './components/index';
 import { themes } from './constants/themes';
 import { useState } from 'react';
 
@@ -12,7 +12,6 @@ export default function App() {
 
   const onHandleInput = (text) => {
     setTask(text)
-    console.log(text)
   }
   const onHandleSubmit = () => {
     
@@ -30,7 +29,6 @@ export default function App() {
   const onHandleModal = (id) => {
     setItemSelected(taskList.filter((item) => item.id === id)[0])
     setModalVisible(true)
-    console.log(itemSelected)
   }
 
   const onHandleDelete = (itemSelected) => {
@@ -40,19 +38,6 @@ export default function App() {
   }
 
 
-  const renderItem = ({item}) => {
-    return (
-    <View key={`task-${item.id}`}>
-      <Text>{item.value}</Text>
-      <TouchableOpacity 
-      style={themes.deleteButton}
-      onPress={() => onHandleModal(item.id)}>
-        <Text style={themes.deleteText}>
-          X
-        </Text>
-      </TouchableOpacity>
-    </View>)
-  }
   
   const ListHeaderComponent = () =>{
     return(
@@ -79,14 +64,14 @@ export default function App() {
        disabled={(taskList.length || task.length) === 0}/>
 
       </View>
-
-      <FlatList
-      ListHeaderComponent={ListHeaderComponent}
-      data={taskList}
-      renderItem={renderItem}
-      keyExtractor= {(item) => item.id.toString()}
-      style={themes.containerList}
+      <List
+        header={ListHeaderComponent}
+        data={taskList}
+        keyExtractor= {(item) => item.id.toString()}
+        style={themes.containerList}
+        
       />
+      
 
       <Modal
         animationType='slide'
