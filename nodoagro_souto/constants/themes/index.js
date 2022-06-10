@@ -23,6 +23,14 @@ export const themes = StyleSheet.create({
         width: "45%",
         color: "#212121"
     },
+    title: {
+        fontSize: 24,
+        borderColor: "#8CBCB9",
+        borderBottomWidth: 2,
+        marginBottom:10,
+        color: "red",
+        textAlign: 'center'
+    },
     button:{
         
         color: "#8CBCB9"
@@ -42,5 +50,11 @@ export const themes = StyleSheet.create({
         color: "#ffffff",
         fontSize: 14,
         fontWeight: 'bold'
+    },
+    image: {
+        height: "100%",
+        width: "100%",
+        minHeight: 400,
+        minWidth: 400
     }
   });

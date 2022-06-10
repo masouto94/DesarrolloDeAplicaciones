@@ -1,6 +1,8 @@
-import { Button, FlatList, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { List, ListHeader, ListItem } from './components/index';
+import { Button, FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { List, ListHeader, ListItem, StartMenu } from './components/index';
 
+import CartMenu from './components/cart-menu'
+import {styles} from './components/list-header/styles'
 import { themes } from './constants/themes';
 import { useState } from 'react';
 
@@ -9,11 +11,13 @@ export default function App() {
   const [taskList, setTaskList] = useState([])
   const [modalVisible, setModalVisible] = useState(false)
   const [itemSelected, setItemSelected] = useState({})
+  const [allReady, setAllReady] = useState(false)
+  const [cartVisible, setCartVisible] = useState(false)
 
   const onHandleInput = (text) => {
     setTask(text)
   }
-  const onHandleSubmit = () => {
+  const onHandleAdd = () => {
     
     setTaskList((currentTasks) => [
       ...currentTasks,
@@ -24,6 +28,14 @@ export default function App() {
   const onHandleReset = () => {
     setTask("")
     setTaskList([])
+  }
+  const onHandleSubmit = () => {
+    setAllReady(true)
+    setCartVisible(true)
+  }
+  const onHandleBackToStart = () => {
+    setAllReady(false)
+    setCartVisible(false)
   }
 
   const onHandleModal = (id) => {
@@ -45,8 +57,23 @@ export default function App() {
        )
   }
   
+  const renderItem = ({item}) => {
+    return (
+    <View key={`task-${item.id}`}>
+      <Text>{item.value}</Text>
+      <TouchableOpacity 
+      style={themes.deleteButton}
+      onPress={() => onHandleModal(item.id)}>
+        <Text style={themes.deleteText}>
+          X
+        </Text>
+      </TouchableOpacity>
+    </View>)
+  }
+
   return (
     <View style={themes.container}>
+      <StartMenu condition={!allReady}>
       <View style={themes.containerTask}>
       <TextInput
         style={themes.text}
@@ -56,7 +83,7 @@ export default function App() {
         />
       <Button style={themes.button}
         title="ADD"
-        onPress={onHandleSubmit}
+        onPress={onHandleAdd}
         disabled={task.length === 0}/>
       <Button style={themes.button}
        title="RESET"
@@ -67,6 +94,7 @@ export default function App() {
       <List
         header={ListHeaderComponent}
         data={taskList}
+        renderer={renderItem}
         keyExtractor= {(item) => item.id.toString()}
         style={themes.containerList}
         
@@ -86,6 +114,39 @@ export default function App() {
           </View>
 
       </Modal>
+
+      <Button style={themes.button}
+        title="SUBMIT"
+        onPress={onHandleSubmit}/>
+        </StartMenu>
+        
+        <CartMenu condition={cartVisible}>
+          <View>
+          <Text style={themes.title}>
+            Esto es lo que se tiene hasta ahora
+          </Text>
+          <Image
+            source={{
+              uri: 'https://www.creativefabrica.com/wp-content/uploads/2019/04/Shopping-cart-icon-by-marco.livolsi2014-2-580x386.jpg'
+          }}
+          style={themes.image}
+            />
+        </View>
+        <View>
+        <List
+        header={""}
+        data={taskList}
+        renderer={renderItem}
+        keyExtractor= {(item) => item.id.toString()}
+        style={themes.containerList}
+        
+        />
+        </View>
+        <Button style={themes.button}
+          title="BACK"
+          onPress={onHandleBackToStart}
+        />
+        </CartMenu>
     </View>
     
   );
