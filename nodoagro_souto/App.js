@@ -2,6 +2,7 @@ import { Button, FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View
 import { List, ListHeader, ListItem, StartMenu } from './src/components/index';
 
 import CartMenu from './src/components/cart-menu'
+import Root from './src/index'
 import {styles} from './src/components/list-header/styles'
 import { themes } from './src/constants/themes';
 import { useState } from 'react';
@@ -73,6 +74,7 @@ export default function App() {
 
   return (
     <View style={themes.container}>
+      <Root/>
       <StartMenu condition={!allReady}>
       <View style={themes.containerTask}>
       <TextInput
