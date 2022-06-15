@@ -1,9 +1,9 @@
 import { Button, FlatList, Image, Modal, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { List, ListHeader, ListItem, StartMenu } from './components/index';
+import { List, ListHeader, ListItem, StartMenu } from './src/components/index';
 
-import CartMenu from './components/cart-menu'
-import {styles} from './components/list-header/styles'
-import { themes } from './constants/themes';
+import CartMenu from './src/components/cart-menu'
+import {styles} from './src/components/list-header/styles'
+import { themes } from './src/constants/themes';
 import { useState } from 'react';
 
 export default function App() {
