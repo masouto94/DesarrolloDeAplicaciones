@@ -5,5 +5,11 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    buttonsStyle: {
+        marginVertical:"5%",
+        marginHorizontal: "1%",
+        flexDirection:"row",
+        alignItems: "center"
     }
 })
