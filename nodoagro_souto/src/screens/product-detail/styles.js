@@ -11,5 +11,9 @@ export const styles = StyleSheet.create({
         marginHorizontal: "1%",
         flexDirection:"row",
         alignItems: "center"
+    },
+    image:{
+        height: 100,
+        width: 100
     }
 })
