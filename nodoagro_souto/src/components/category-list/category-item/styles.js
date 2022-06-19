@@ -5,7 +5,7 @@ export const themes = StyleSheet.create({
     itemContainer: {
         flex:1,
         borderRadius: 10,
-        margin: 20,
+        margin: 10,
         height: 120
     },
     item: {
@@ -16,12 +16,13 @@ export const themes = StyleSheet.create({
         shadowOffset: 2,
         shadowRadius:8,
         elevation:4,
-        justifyContent:"flex-end",
-        alignItems:"flex-end",
+        justifyContent:"center",
+        alignItems:"center",
         padding: 10
         
     },
     title: {
-        fontFamily: 'Lato-Bold'
+        fontFamily: 'Lato-Bold',
+        fontSize:25
     }
 })

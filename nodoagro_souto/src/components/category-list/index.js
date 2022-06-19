@@ -2,7 +2,7 @@ import {CategoryItem} from '../index'
 import { FlatList } from 'react-native'
 import React from 'react'
 
-const Category = ({data, onSelected}) => {
+const CategoryList = ({data, onSelected}) => {
 
     const renderCategoryItem = ({item}) => {
         return(
@@ -18,4 +18,4 @@ const Category = ({data, onSelected}) => {
     )
 }
 
-export default Category
+export default CategoryList

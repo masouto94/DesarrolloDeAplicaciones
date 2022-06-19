@@ -9,7 +9,7 @@ const colors={
     dulces: "#AE431E",
     frutos_secos: "#D06224",
     higiene: "#E5DCC3",
-    otros: "#212121",
+    otros: "#219001",
     promos: "#284E78"
 
 

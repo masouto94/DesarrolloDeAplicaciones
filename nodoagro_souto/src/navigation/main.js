@@ -25,9 +25,22 @@ const MainNavigator = () => {
         <Stack.Screen
         name='Categorías' 
         component={Categories}
+        
         />
-        <Stack.Screen name='Products' component={Products}/>
-        <Stack.Screen name='ProductDetail' component={ProductDetail}/>
+        <Stack.Screen 
+        name='Products' 
+        component={Products}
+        options={
+          //Una prop {} que es un callback () de una prop {} que retorna () un objeto {}
+          ({route}) => ({title: route.params.name})
+        }/>
+        <Stack.Screen
+        name='ProductDetail'
+        component={ProductDetail}
+        options={
+          //Una prop {} que es un callback () de una prop {} que retorna () un objeto {}
+          ({route}) => ({title: route.params.name})
+        }/>
     </Stack.Navigator>
   )
 }

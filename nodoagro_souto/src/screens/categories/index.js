@@ -1,5 +1,5 @@
 import {CATEGORIES} from '../../constants/mock_data/index'
-import { Category } from '../../components/index'
+import { CategoryList } from '../../components/index'
 import React from 'react'
 import {View} from 'react-native'
 import {styles} from './styles'
@@ -14,7 +14,7 @@ const Categories = ({navigation,route}) => {
   }
   return (
     <View style={styles.container}>
-      <Category
+      <CategoryList
         data={CATEGORIES}
         onSelected={onSelectedCategory}/>
     </View>
