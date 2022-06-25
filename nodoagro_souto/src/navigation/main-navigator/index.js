@@ -39,7 +39,7 @@ const MainNavigator = () => {
         component={ProductDetail}
         options={
           //Una prop {} que es un callback () de una prop {} que retorna () un objeto {}
-          ({route}) => ({title: route.params.name})
+          ({route}) => ({title: route.params.item.name})
         }/>
     </Stack.Navigator>
   )
