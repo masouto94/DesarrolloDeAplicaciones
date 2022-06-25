@@ -1,8 +1,8 @@
-import { Categories, ProductDetail, Products } from "../screens/index";
-import { isAndroid, isIos } from "../constants/utils/index";
+import { Categories, ProductDetail, Products } from "../../screens/index";
+import { isAndroid, isIos } from "../../constants/utils/index";
 
 import React from "react";
-import {colors} from '../constants/themes/index'
+import {colors} from '../../constants/themes/index'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator()

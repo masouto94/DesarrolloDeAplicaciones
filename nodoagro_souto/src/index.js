@@ -1,12 +1,12 @@
-import AppNavigator from './navigation/index'
 import React from 'react'
+import TabNavigator from './navigation/tab-navigator/index'
 import { View } from 'react-native'
 import { styles } from './styles'
 
 const Root = () => {
   return (
     <View style={styles.container}>
-        <AppNavigator/>
+        <TabNavigator/>
     </View>
   )
 }

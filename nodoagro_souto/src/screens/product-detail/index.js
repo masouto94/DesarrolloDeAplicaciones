@@ -9,11 +9,11 @@ const ProductDetail = ({navigation, route}) => {
   return (
     
     <View style={styles.container}>
+      <View style={styles.cardContainer}>
         <ProductCard item={product} onSelected={()=>{}}/>
-        <View>
+        </View>
         <Image style={styles.image}
         source={{uri:product.image}}/>
-        </View>
         <View style={styles.buttonsStyle}>
         <Button 
           title= "Atrás"

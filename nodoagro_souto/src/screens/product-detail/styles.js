@@ -3,8 +3,15 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        flexDirection:'column',
+        justifyContent: 'space-between',
+        alignItems:'center'
+
+    },
+    cardContainer: {
+        flex: 0.5,
+        flexDirection:"column",
+        justifyContent:"flex-start"
     },
     buttonsStyle: {
         marginVertical:"5%",
