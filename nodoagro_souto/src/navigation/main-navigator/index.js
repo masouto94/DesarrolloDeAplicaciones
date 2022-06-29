@@ -4,6 +4,7 @@ import { isAndroid, isIos } from "../../constants/utils/index";
 import React from "react";
 import {colors} from '../../constants/themes/index'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator()
 
@@ -31,16 +32,20 @@ const MainNavigator = () => {
         name='Products' 
         component={Products}
         options={
-          //Una prop {} que es un callback () de una prop {} que retorna () un objeto {}
-          ({route}) => ({title: route.params.name})
-        }/>
+          {
+            title: useSelector(state => state.categories.selected.title)
+          }
+        }
+        />
         <Stack.Screen
         name='ProductDetail'
         component={ProductDetail}
         options={
-          //Una prop {} que es un callback () de una prop {} que retorna () un objeto {}
-          ({route}) => ({title: route.params.item.name})
-        }/>
+          {
+            title: useSelector(state => state.products.selected.name)
+          }
+        }
+        />
     </Stack.Navigator>
   )
 }

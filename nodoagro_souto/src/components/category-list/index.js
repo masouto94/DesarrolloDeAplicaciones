@@ -13,7 +13,7 @@ const CategoryList = ({data, onSelected}) => {
 
         <FlatList
         data={data}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         renderItem={renderCategoryItem}/>
     )
 }

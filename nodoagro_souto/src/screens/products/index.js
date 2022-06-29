@@ -1,19 +1,31 @@
-import {PRODUCTS} from '../../constants/mock_data/index'
+import React, {useEffect} from 'react'
+import { filterProducts, selectProduct } from '../../store/actions'
+import {useDispatch, useSelector} from 'react-redux'
+
 import { ProductList } from '../../components/index'
-import React from 'react'
 import {View} from 'react-native'
 import {styles} from './styles'
 
-const Products = ({navigation,route}) => {
-  const filteredProducts = PRODUCTS.filter(item => item.categoryID === route.params.categoryID)
+const Products = ({navigation}) => {
+  const dispatch = useDispatch()
+  const selectedCategory = useSelector(state => state.categories.selected)
+  const filteredProducts = useSelector(state=> state.products.filtered)
+  const selectedProduct = useSelector(state=> state.products.selected)
+  
+
+  useEffect(() => {
+    dispatch(filterProducts(selectedCategory.id))
+  }, [])
+
   const onSelectedProduct = (item) => {
-    navigation.navigate('ProductDetail', {item})
+    dispatch(selectProduct(item.id))
+    navigation.navigate('ProductDetail', {selectedProduct})
   }
   return (
     <View style={styles.container}>
       <ProductList
         data={filteredProducts}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
         onSelected={onSelectedProduct}/>
     </View>
   )
