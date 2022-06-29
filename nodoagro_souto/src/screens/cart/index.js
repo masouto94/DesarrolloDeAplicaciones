@@ -1,14 +1,14 @@
 import { FlatList, Text, View } from 'react-native'
 
-import { CartItem } from '../../components'
+import { CartItem } from '../../components/index'
 import React from 'react'
 import {cart} from '../../constants/mock_data/index'
 
 const Cart = () => {
   const items= cart
-  const total = 120
+  const total = items.price
   
-  const onHandleDeleteCart = (id) =>{
+  const onHandleDeleteCart = (id) => {
     console.log(id)
   }
 
