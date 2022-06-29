@@ -11,6 +11,8 @@ const ProductDetail = ({navigation, route}) => {
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         <ProductCard item={product} onSelected={()=>{}}/>
+        <Button
+          title= "Añadir al carrito"/>
         </View>
         <Image style={styles.image}
         source={{uri:product.image}}/>

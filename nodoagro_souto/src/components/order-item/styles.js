@@ -1,13 +1,17 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    cartContainer: {
+    orderContainer: {
         flex: 1
     },
-    cartItem: {
+    orderItem: {
         flex: 1
     },
-    cartDelete: {
+    orderSelect: {
+        fontFamily: 'Lato-Bold',
+        backgroundColor: "green"
+    },
+    orderDelete: {
         fontFamily: 'Lato-Bold',
         backgroundColor: "red"
     }

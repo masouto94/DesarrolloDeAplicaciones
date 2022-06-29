@@ -10,7 +10,9 @@ const CartItem = ({item, onDelete}) => {
         <Text>{item.name}</Text>
         <Text>{item.description}</Text>
      </View>
-     <TouchableOpacity onPress={onDelete}><Text>Borrar</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.cartDelete} onPress={onDelete}>
+        <Text>Borrar</Text>
+    </TouchableOpacity>
     </View>
 
   )

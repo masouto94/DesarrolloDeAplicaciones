@@ -4,6 +4,7 @@ import CartNavigator from '../cart-navigator/index'
 import Ionicons from 'ionicons'
 import MainNavigator from '../main-navigator/index'
 import { NavigationContainer } from '@react-navigation/native'
+import OrdersNavigator from '../orders-navigator/index'
 import React from 'react'
 import { colors } from '../../constants/themes'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -64,6 +65,14 @@ const TabNavigator = () => {
         options={{
             tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Carrito'),
             tabBarIcon: ({focused}) => focused ? <Text>CARRITO</Text> : <Text>carrito</Text>
+        }}/>
+
+        <BottomTabs.Screen
+        name='Ordenes'
+        component={OrdersNavigator}
+        options={{
+            tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Ordenes'),
+            tabBarIcon: ({focused}) => focused ? <Text>ORDENES</Text> : <Text>ordenes</Text>
         }}/>
 
     </BottomTabs.Navigator>
