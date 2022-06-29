@@ -8,7 +8,11 @@ import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator()
 
+
+
 const MainNavigator = () => {
+  const filteredProductsTitle = useSelector(state => state.categories.selected)
+  const productDetailTitle = useSelector(state => state.products.selected)
   return (
     <Stack.Navigator 
       initialRouteName='Categories'
@@ -33,7 +37,7 @@ const MainNavigator = () => {
         component={Products}
         options={
           {
-            title: useSelector(state => state.categories.selected.title)
+            title: filteredProductsTitle ? filteredProductsTitle.title : ""
           }
         }
         />
@@ -42,7 +46,7 @@ const MainNavigator = () => {
         component={ProductDetail}
         options={
           {
-            title: useSelector(state => state.products.selected.name)
+            title: productDetailTitle ? productDetailTitle.name : ""
           }
         }
         />
