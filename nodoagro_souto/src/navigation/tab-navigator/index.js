@@ -1,7 +1,7 @@
 import { Text, View } from 'react-native'
 
 import CartNavigator from '../cart-navigator/index'
-import Ionicons from 'ionicons'
+import Ionicons from '@expo/vector-icons/Ionicons';
 import MainNavigator from '../main-navigator/index'
 import { NavigationContainer } from '@react-navigation/native'
 import OrdersNavigator from '../orders-navigator/index'
@@ -34,7 +34,13 @@ const TabNavigator = () => {
         component={MainNavigator}
         options={{
             tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Tienda'),
-            tabBarIcon: ({focused}) => focused ? <Text>TIENDA</Text> : <Text>tienda</Text>
+            tabBarIcon: ({focused}) => (
+                <View style={styles.container}>
+                    <Ionicons name={focused ? "home" : "home-outline"}
+                    size={32}
+                    color={focused ? colors.secondary : colors.primary}/>
+                </View>
+            )
         }}
 
         />
