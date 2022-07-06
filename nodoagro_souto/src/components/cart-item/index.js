@@ -1,5 +1,6 @@
 import {Text, TouchableOpacity, View} from 'react-native'
 
+import Ionicons from '@expo/vector-icons/Ionicons'
 import React from 'react'
 import { styles } from './styles'
 
@@ -11,7 +12,7 @@ const CartItem = ({item, onDelete}) => {
         <Text>{item.description}</Text>
      </View>
     <TouchableOpacity style={styles.cartDelete} onPress={onDelete}>
-        <Text>Borrar</Text>
+        <Ionicons name={"trash-sharp"}/>
     </TouchableOpacity>
     </View>
 

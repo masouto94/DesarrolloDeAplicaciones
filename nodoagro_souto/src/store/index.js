@@ -1,11 +1,12 @@
 import {} from 'redux'
 
-import { categoryReducer, productReducer } from './reducers/index'
+import { categoryReducer, orderReducer, productReducer } from './reducers/index'
 import { combineReducers, createStore } from 'redux'
 
 const rootReducer = combineReducers({
     products:productReducer,
-    categories: categoryReducer
+    categories: categoryReducer,
+    orders: orderReducer
 })
 
 export default createStore(rootReducer)

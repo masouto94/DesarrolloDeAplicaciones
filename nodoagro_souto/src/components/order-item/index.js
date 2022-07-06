@@ -1,5 +1,6 @@
 import {Text, TouchableOpacity, View} from 'react-native'
 
+import Ionicons from '@expo/vector-icons/Ionicons'
 import React from 'react'
 import { styles } from './styles'
 
@@ -17,7 +18,7 @@ const OrderItem = ({item, onSelect, onDelete}) => {
         </TouchableOpacity>
      </View>
     <TouchableOpacity style={styles.orderDelete} onPress={onDelete}>
-        <Text>Borrar</Text>
+      <Ionicons name={"trash-sharp"}/>
     </TouchableOpacity>
     </View>
 
