@@ -1,16 +1,22 @@
+import * as ACTIONS from '../../store/actions/index'
+
 import { FlatList, Text, TouchableOpacity, View } from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
 
 import { CartItem } from '../../components/index'
 import React from 'react'
-import {cart} from '../../constants/mock_data/index'
 import { styles } from './styles'
 
 const Cart = () => {
-  const items= cart 
-  const total = items.reduce((prev, item) => prev+item.price,0 )
+  const dispatcher = useDispatch()
+  const items= useSelector(state => state.cart.items) 
+
+  const total = useSelector(state => state.cart.total)
   
   const onHandleDeleteCart = (id) => {
-    console.log(id)
+    dispatcher(ACTIONS.removeFromCart(id))
+    dispatcher(ACTIONS.sumTotalPriceInCart())
+
   }
 
   const onHandleConfirmCart = (items) => {
@@ -19,7 +25,7 @@ const Cart = () => {
 
   const renderItem = ({item}) =>{
     return(
-      <CartItem item={item} onDelete={() => onHandleDeleteCart(item)}/>
+      <CartItem item={item} onDelete={() => onHandleDeleteCart(item.id)}/>
     )
   }
 
@@ -37,11 +43,11 @@ const Cart = () => {
           style={styles.cartConfirm}
           onPress={() => onHandleConfirmCart(items)}
           >
-            <Text>
-              Confirmar
-            </Text>
             <View>
-              <Text>Total: {total} </Text>
+            <Text style={styles.cartConfirmContent}>Confirmar</Text>
+            </View>
+            <View>
+            <Text style={styles.cartConfirmContent}>Total: {total} </Text>
             </View>
           </TouchableOpacity>
         </View>

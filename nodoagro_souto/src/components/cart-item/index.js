@@ -9,11 +9,15 @@ const CartItem = ({item, onDelete}) => {
     <View style={styles.cartContainer}>
      <View style={styles.cartItem}>
         <Text>{item.name}</Text>
-        <Text>{item.description}</Text>
-     </View>
+        <View style={styles.quantity}>
+        <Text>{item.quantity}</Text>
+        </View>
+    </View>
+    <View style={styles.itemDelete}>
     <TouchableOpacity style={styles.cartDelete} onPress={onDelete}>
-        <Ionicons name={"trash-sharp"}/>
+        <Ionicons style={styles.cartDeleteIcon} name={"trash-sharp"}/>
     </TouchableOpacity>
+    </View>
     </View>
 
   )

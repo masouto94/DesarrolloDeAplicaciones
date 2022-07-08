@@ -1,20 +1,29 @@
+import  * as ACTIONS from '../../store/actions'
+
 import {Button, Image, View} from 'react-native'
 import {useDispatch, useSelector} from 'react-redux'
 
 import { ProductCard } from '../../components/index'
 import React from 'react'
-import { selectProduct } from '../../store/actions'
 import {styles} from './styles'
 
 const ProductDetail = ({navigation}) => {
+  const dispatcher = useDispatch()
   const product= useSelector(state => state.products.selected) 
+
+  const onHandleAddToCart = () => {
+    dispatcher(ACTIONS.addToCart(product))
+    dispatcher(ACTIONS.sumTotalPriceInCart())
+
+  }
   return (
     
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         <ProductCard item={product} onSelected={()=>{}}/>
         <Button
-          title= "Añadir al carrito"/>
+          title= "Añadir al carrito"
+          onPress={onHandleAddToCart}/>
         </View>
         <Image style={styles.image}
         source={{uri:product.image}}/>

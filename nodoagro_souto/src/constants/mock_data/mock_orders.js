@@ -1,19 +1,19 @@
-import { cart } from "./mock_cart"
+import { PRODUCTS } from "./index"
 export const orders = [
     {
         id: 0,
         date: 123456789,
-        total: cart.reduce((prev, item) => prev+item.price,0 ),
+        total: 123,
         items: [
-            cart
+            PRODUCTS[0]           
         ]
     },
     {
         id: 1,
         date: 122222231,
-        total: cart.reduce((prev, item) => prev+item.price,0 ),
+        total: 321,
         items: [
-            cart
+            PRODUCTS[0],PRODUCTS[2]
         ]
     }
 ]
