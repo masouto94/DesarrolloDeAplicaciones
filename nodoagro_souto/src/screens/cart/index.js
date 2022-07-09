@@ -19,8 +19,8 @@ const Cart = () => {
 
   }
 
-  const onHandleConfirmCart = (items) => {
-    console.log(items)
+  const onHandleConfirmCart = () => {
+    dispatcher(ACTIONS.confirmCart(items,total))
   }
 
   const renderItem = ({item}) =>{
@@ -41,7 +41,7 @@ const Cart = () => {
         <View style={styles.footer}>
           <TouchableOpacity 
           style={styles.cartConfirm}
-          onPress={() => onHandleConfirmCart(items)}
+          onPress={() => onHandleConfirmCart}
           >
             <View>
             <Text style={styles.cartConfirmContent}>Confirmar</Text>
