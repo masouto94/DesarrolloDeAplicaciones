@@ -22,7 +22,7 @@ const CartNavigator = () => {
           }
         }}>
         <Stack.Screen
-        name='CartScreen' 
+        name='Tu compra' 
         component={Cart}
         />
     </Stack.Navigator>

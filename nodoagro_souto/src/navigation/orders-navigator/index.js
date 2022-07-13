@@ -22,7 +22,7 @@ const OrdersNavigator = () => {
           }
         }}>
         <Stack.Screen
-        name='OrdersScreen' 
+        name='Órdenes' 
         component={Orders}
         />
     </Stack.Navigator>
