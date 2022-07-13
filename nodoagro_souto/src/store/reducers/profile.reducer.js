@@ -1,9 +1,9 @@
 import { profileTypes } from '../types/index'
 
 const {SAVE_PHOTO, DELETE_PHOTO} = profileTypes
-
+const defaultPicture = {uri:'../../images/no-foto.png'}
 const initialState = {
-    current:null
+    current:   defaultPicture
 }
 
 const profileReducer = (state=initialState, action) => {
@@ -11,7 +11,7 @@ const profileReducer = (state=initialState, action) => {
         case SAVE_PHOTO:
         return {
             ...state,
-            current: action.photo
+            current: {uri:action.photo}
         }
         
         case DELETE_PHOTO:

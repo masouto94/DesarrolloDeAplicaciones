@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 const ImageSelector = ({onPhoto}) => {
     const [pickedUrl, setPickedUrl] = useState()
-    console.log(pickedUrl)
+
     const verifyPermissions = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync()
         if (status !== "granted"){
@@ -29,7 +29,7 @@ const ImageSelector = ({onPhoto}) => {
             aspect: [16,9],
             quality: 0.8
         })
-        console.log(photo)
+
         setPickedUrl(photo.uri)
         onPhoto(photo.uri)
 

@@ -14,7 +14,9 @@ const Profile = () => {
   }
   return (
     <View style={styles.container}>
-      <Image style={{flex:1}} source={{uri: profilePicture}}/>
+      <View style={styles.container}>
+      <Image style={{flex:1}} source={profilePicture}/>
+      </View>
     <ImageSelector onPhoto={(photo) => handleSavePhoto(photo)}/>
     <Button
         title="Guardar"
