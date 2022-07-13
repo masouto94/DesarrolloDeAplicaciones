@@ -22,23 +22,23 @@ export const sumTotalPriceInCart = () => {
     })
 }
 
-export const confirmCart = (payload,total) => {
-    return async dispatch => {
+export const confirmCart = (items,total) => {
+    return async (dispatcher) => {
         try{
-            const response = await fetch(`${API_URL}orders.json`, {
+            const response = await fetch(`${API_URL}/orders.json`, {
                 method: "POST",
                 headers:{
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     date: Date.now(),
-                    items:payload,
+                    items:items,
                     total: total
                 })
             })
         const result= await response.json()
         console.log(result)
-        dispatch({
+        dispatcher({
             type: CONFIRM,
             confirm:true
         })

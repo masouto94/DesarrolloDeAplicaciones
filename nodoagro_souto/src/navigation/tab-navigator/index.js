@@ -8,6 +8,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import MainNavigator from '../main-navigator/index'
 import { NavigationContainer } from '@react-navigation/native'
 import OrdersNavigator from '../orders-navigator/index'
+import ProfileNavigator from '../profile-navigator'
 import React from 'react'
 import { colors } from '../../constants/themes'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -80,6 +81,20 @@ const TabNavigator = () => {
             tabBarIcon: ({focused}) => (
                 <View style={styles.container}>
                     <Ionicons name={focused ? `${ordersTrayIcons}-sharp` : `${ordersTrayIcons}-outline`}
+                    size={32}
+                    color={focused ? colors.secondary : colors.primary}/>
+                </View>
+            )
+        }}/>
+
+        <BottomTabs.Screen
+        name='Mi Perfil'
+        component={ProfileNavigator}
+        options={{
+            tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Mi Perfil'),
+            tabBarIcon: ({focused}) => (
+                <View style={styles.container}>
+                    <Ionicons name={focused ? 'flower-sharp' : 'flower-outline'}
                     size={32}
                     color={focused ? colors.secondary : colors.primary}/>
                 </View>

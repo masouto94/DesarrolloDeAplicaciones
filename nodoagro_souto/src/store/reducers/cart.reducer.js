@@ -18,11 +18,9 @@ export const cartReducer = (state=initialState, action) => {
                     if (item.id === action.item.id) item.quantity++
                     return item
                 })
-                console.log("next",updatedCart)
             } else {
                 const item = {...action.item, quantity:1}
                 updatedCart = [...state.items, item]
-                console.log("first",updatedCart)
             }
             return{
                 ...state,
@@ -44,11 +42,7 @@ export const cartReducer = (state=initialState, action) => {
                     ...state,
                     items: state.items.filter(elem => elem.id !== action.itemID)
                 }}
-        case CONFIRM: 
-            return{
-                ...state
 
-            }
         case SUM_TOTAL:
             return{
                 ...state,

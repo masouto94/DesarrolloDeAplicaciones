@@ -41,7 +41,7 @@ const Cart = () => {
         <View style={styles.footer}>
           <TouchableOpacity 
           style={styles.cartConfirm}
-          onPress={() => onHandleConfirmCart}
+          onPress={() => onHandleConfirmCart()}
           >
             <View>
             <Text style={styles.cartConfirmContent}>Confirmar</Text>
