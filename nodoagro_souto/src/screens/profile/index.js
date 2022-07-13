@@ -1,15 +1,24 @@
-import {Button, Text, View} from 'react-native'
+import {Button, Image, Text, View} from 'react-native'
+import {useDispatch, useSelector} from 'react-redux'
 
 import ImageSelector from '../../components/image-selector'
 import React from 'react'
+import { saveProfilePicture } from '../../store/actions/index'
 import { styles } from './styles'
 
 const Profile = () => {
+  const dispatcher = useDispatch()
+  const profilePicture = useSelector(state => state.profile.current)
+  const handleSavePhoto = (photo) => {
+    dispatcher(saveProfilePicture(photo))
+  }
   return (
     <View style={styles.container}>
-    <ImageSelector onPhoto={(photo) => {console.log(photo)}}/>
+      <Image style={{flex:1}} source={{uri: profilePicture}}/>
+    <ImageSelector onPhoto={(photo) => handleSavePhoto(photo)}/>
     <Button
-        title="Guardar"/>
+        title="Guardar"
+        onPress={() => console.log(profilePicture)}/>
     </View>
   )
 }
