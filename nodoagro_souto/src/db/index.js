@@ -21,14 +21,6 @@ export const sqlStatementMapper = async (dbInstance, sqlStatement, sqlArgs=[]) =
     return sqlPromise
 }
 
-export const populateMock = async (user,photo,email) => {
-    return sqlStatementMapper(db,
-        'INSERT INTO profile(user_name, profile_picture , email) VALUES (?,?,?)',
-        [user,photo,email])
-
-}
-
-
 export const  init  = async () => {
     return sqlStatementMapper(
         db,
@@ -44,3 +36,20 @@ export const select = async () => {
     
     return sqlStatementMapper(db, 'SELECT * from profile')
 }
+
+export const insertProfile = async (user_name, profile_picture, email) => {
+    return sqlStatementMapper(
+        db,
+        'INSERT INTO profile (user_name, profile_picture, email) VALUES(?,?,?)',
+        [user_name, profile_picture, email]
+    )
+
+}
+export const populateMock = async (user,photo,email) => {
+    return sqlStatementMapper(db,
+        'INSERT INTO profile(user_name, profile_picture , email) VALUES (?,?,?)',
+        [user,photo,email])
+
+}
+
+

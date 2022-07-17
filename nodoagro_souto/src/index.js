@@ -13,9 +13,7 @@ init()
   .catch((err) => {
     console.log(err)
   })
-populateMock("usuario1","foto1","email1")
-populateMock("usuario2","foto2","email2")
-populateMock("usuario3","foto3","email3")
+
 
 select()
   .then((res) => {
