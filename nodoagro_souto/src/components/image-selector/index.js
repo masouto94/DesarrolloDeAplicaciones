@@ -6,10 +6,8 @@ import {Alert, Button, Image, Text, View} from 'react-native'
 import React from 'react'
 import { colors } from '../../constants/themes'
 import { styles } from './styles'
-import { useState } from 'react'
 
 const ImageSelector = ({onPhoto}) => {
-    const [pickedUrl, setPickedUrl] = useState()
 
     const verifyPermissions = async () => {
         const {status} = await ImagePicker.requestCameraPermissionsAsync()
@@ -30,20 +28,12 @@ const ImageSelector = ({onPhoto}) => {
             quality: 0.8
         })
 
-        setPickedUrl(photo.uri)
         onPhoto(photo.uri)
 
     }
     
         return (
         <View style={styles.container}>
-      <View style={styles.preview}>
-        {!pickedUrl ? (
-          <Text>No hay una imagen seleccionada...</Text>
-        ) : (
-          <Image source={{ uri: pickedUrl }} style={styles.image} />
-        )}
-      </View>
             <Button
                 title='Tomar Foto'
                 onPress={handleTakePhoto}

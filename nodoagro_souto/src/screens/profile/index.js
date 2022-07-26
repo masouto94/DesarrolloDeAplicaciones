@@ -10,7 +10,6 @@ import { useState } from 'react'
 const Profile = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-
   const dispatcher = useDispatch()
   const profilePicture = useSelector(state => state.profile.currentPhoto)
 
@@ -24,7 +23,13 @@ const Profile = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-      <Image style={{flex:1}} source={profilePicture}/>
+        {profilePicture
+          ? <Image style={styles.container} source={profilePicture} />
+          : (<View style={styles.placeHolder}>
+              <Text style={styles.placeHolderText}>Seleccione una imagen</Text>
+            </View>)
+        }
+        
       </View>
     <ImageSelector onPhoto={(photo) => handleSavePhoto(photo)}/>
     <View style={styles.container}>

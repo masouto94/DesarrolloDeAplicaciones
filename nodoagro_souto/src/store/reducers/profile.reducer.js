@@ -1,9 +1,8 @@
 import { profileTypes } from '../types/index'
 const {SAVE_PHOTO, DELETE_PHOTO, SAVE_PROFILE} = profileTypes
-const defaultPicture = {uri:'../../images/no-foto.png'}
 const initialState = {
     user_name: "",
-    currentPhoto:   defaultPicture,
+    currentPhoto: null,
     email:""
 }
 

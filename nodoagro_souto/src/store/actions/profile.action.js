@@ -5,7 +5,6 @@ import { profileTypes } from "../types/index";
 
 const {SAVE_PHOTO, DELETE_PHOTO, SAVE_PROFILE} = profileTypes
 
-//ver si se puede dejar privada porque despacha savePlace que seria saveProfilePicture
 export const savePhoto = (photo) => ({
     type: SAVE_PHOTO,
     photo: photo
