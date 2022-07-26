@@ -1,12 +1,10 @@
 import React from 'react'
 import { orderTypes } from '../types/index'
-import { orders } from '../../constants/mock_data'
 
-const ORDERS = orders
-const {SELECT_ORDER, ANY_ORDER} = orderTypes
+const {SELECT_ORDER, ANY_ORDER, GET_ORDERS} = orderTypes
 
 const initialState = {
-    all: ORDERS,
+    all: [],
     selected: null,
     any: false 
 }
@@ -24,6 +22,11 @@ const orderReducer = (state=initialState,action) => {
         return{
             ...state,
             any: state.all.length > 0
+        }
+      case GET_ORDERS:
+        return{
+            ...state,
+            all: action.orders
         }
     default:
         return state

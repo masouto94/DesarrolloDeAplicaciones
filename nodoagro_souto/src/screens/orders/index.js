@@ -1,9 +1,10 @@
+import * as ACTIONS from '../../store/actions'
+
 import { FlatList, Text, View } from 'react-native'
+import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {OrderItem} from '../../components/index'
-import React from 'react'
-import { selectOrder } from '../../store/actions'
 import { styles } from './styles'
 
 const onHandleSelect = (item) =>{
@@ -23,8 +24,11 @@ const renderItem = ({item}) => {
     />
     )
   }
-  const Orders = () => {
-  const dispatch = useDispatch()
+const Orders = () => {
+  const dispatcher = useDispatch()
+  useEffect(() => {
+    dispatcher(ACTIONS.fetchOrders())
+  },[])
   const data= useSelector(state => state.orders.all)
   return (
     <View style={styles.container}>
