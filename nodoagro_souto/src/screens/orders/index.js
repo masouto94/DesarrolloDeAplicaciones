@@ -28,7 +28,8 @@ const Orders = () => {
   const dispatcher = useDispatch()
   useEffect(() => {
     dispatcher(ACTIONS.fetchOrders())
-  },[])
+  })
+  debugger
   const data= useSelector(state => state.orders.all)
   return (
     <View style={styles.container}>

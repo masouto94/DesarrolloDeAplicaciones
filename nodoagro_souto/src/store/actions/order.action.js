@@ -1,5 +1,5 @@
 import { collection, getDocs, query } from "firebase/firestore";
-import {onValue, ref} from 'firebase/database'
+import {onChildAdded, onValue, ref} from 'firebase/database'
 
 import { API_URL } from "../../constants/firebase/firebase";
 import { database } from '../../constants/firebase/firebase'
@@ -7,14 +7,22 @@ import { orderTypes } from "../types/index";
 
 const {SELECT_ORDER, ANY_ORDER, GET_ORDERS} = orderTypes
 
-console.log("FB", database)
-const orders = ref(database, 'orders');
+const ordersCollection = ref(database, 'orders');
 
-onValue(orders, (snapshot) => {
-    const data = snapshot.val()
-    console.log(data)
-});
 
+const data = []
+onChildAdded(ordersCollection, (snapshot, prev) => {
+
+
+    let order = {
+        id: snapshot.key,
+        date: snapshot.val().date,
+        items: snapshot.val().items,
+        total: snapshot.val().total
+    }
+    console.log(order)
+    data.push(order)
+})
 
 export const selectOrder = (id) => ({
     type: SELECT_ORDER,
@@ -29,15 +37,10 @@ export const anyLoadedOrder = () => ({
 export const fetchOrders = () => {
     return async (dispatcher) => {
         try {
-            const response = await orders
-            const resultado = response
-            console.log(resultado)
-            console.log(resultado.body)
-            console.log(resultado.text())
-            
+
             dispatcher({
                 type: GET_ORDERS,
-                orders: []
+                orders: await data
             })
             
             
