@@ -40,7 +40,7 @@ export const fetchOrders = () => {
 
             dispatcher({
                 type: GET_ORDERS,
-                orders: await data
+                orders: data
             })
             
             

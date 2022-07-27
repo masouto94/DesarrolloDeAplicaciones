@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import { ProductCard } from '../../components/index'
 import React from 'react'
+import { colors } from '../../constants/themes'
 import {styles} from './styles'
 
 const ProductDetail = ({navigation}) => {
@@ -23,17 +24,20 @@ const ProductDetail = ({navigation}) => {
         <ProductCard item={product} onSelected={()=>{}}/>
         <Button
           title= "Añadir al carrito"
-          onPress={onHandleAddToCart}/>
+          onPress={onHandleAddToCart}
+          color={colors.primary}/>
         </View>
         <Image style={styles.image}
         source={{uri:product.image}}/>
         <View style={styles.buttonsStyle}>
         <Button 
           title= "Atrás"
-          onPress={()=> navigation.goBack()}/>
+          onPress={()=> navigation.goBack()}
+          />
         <Button 
           title= "Volver a inicio"
-          onPress={()=> navigation.popToTop()}/>
+          onPress={()=> navigation.popToTop()}
+          />
           </View>
     </View>
   )

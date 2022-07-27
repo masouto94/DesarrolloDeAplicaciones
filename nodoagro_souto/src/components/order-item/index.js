@@ -1,6 +1,5 @@
 import {Text, TouchableOpacity, View} from 'react-native'
 
-import Ionicons from '@expo/vector-icons/Ionicons'
 import React from 'react'
 import { styles } from './styles'
 
@@ -8,18 +7,20 @@ const formatDate = (time) => {
   let date = new Date(time)
   return date.toLocaleDateString() 
 }
-const OrderItem = ({item, onSelect, onDelete}) => {
+const OrderItem = ({item, onSelect}) => {
   return (
     <View style={styles.orderContainer}>
      <View style={styles.orderItem}>
       <TouchableOpacity style={styles.orderSelect} onPress={onSelect}>
-        <Text>{formatDate(item.date)}</Text>
-        <Text>{item.total}</Text>
+        <View style={styles.orderPiece}>
+          <Text>{formatDate(item.date)}</Text>
+        </View>
+        <View style={styles.orderPiece}>
+          <Text>${item.total}</Text>
+        </View>
         </TouchableOpacity>
      </View>
-    <TouchableOpacity style={styles.orderDelete} onPress={onDelete}>
-      <Ionicons name={"trash-sharp"}/>
-    </TouchableOpacity>
+
     </View>
 
   )

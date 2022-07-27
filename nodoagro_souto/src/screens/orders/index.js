@@ -4,39 +4,31 @@ import { FlatList, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {OrderItem} from '../../components/index'
+import {OrderList} from '../../components/index'
 import { styles } from './styles'
 
-const onHandleSelect = (item) =>{
-  console.log(item)
-}
+const Orders = ({navigation}) => {
+  const selectedOrder = useSelector(state => state.orders.selected)
 
-const onHandleDelete = (item) =>{
-  console.log(item)
-}
-
-const renderItem = ({item}) => {
-  return(
-    <OrderItem 
-    item={item} 
-    onSelect={() => onHandleSelect(item)} 
-    onDelete={() => onHandleDelete(item)}
-    />
-    )
-  }
-const Orders = () => {
   const dispatcher = useDispatch()
   useEffect(() => {
     dispatcher(ACTIONS.fetchOrders())
   })
-  debugger
+  const onHandleSelect = (item) => {
+    dispatcher(ACTIONS.selectOrder(item.id))
+    console.log(selectedOrder)
+    navigation.navigate('OrderDetail', { selectedOrder })
+  }
+
+
   const data= useSelector(state => state.orders.all)
   return (
     <View style={styles.container}>
-        <FlatList
+      <OrderList
         data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}/>
+        keyExtractor={(item) => item.id} 
+        onSelected={onHandleSelect} />
+
     </View>
   )
 }

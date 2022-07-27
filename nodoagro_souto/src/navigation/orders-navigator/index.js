@@ -1,6 +1,6 @@
+import { OrderDetail, Orders } from '../../screens/index'
 import { isAndroid, isIos } from "../../constants/utils/index";
 
-import { Orders } from '../../screens/index'
 import React from 'react'
 import { colors } from "../../constants/themes";
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -24,6 +24,11 @@ const OrdersNavigator = () => {
         <Stack.Screen
         name='Órdenes' 
         component={Orders}
+        />
+
+        <Stack.Screen
+          name='OrderDetail'
+          component={OrderDetail}
         />
     </Stack.Navigator>
   )
