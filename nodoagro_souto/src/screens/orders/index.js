@@ -10,13 +10,14 @@ import { styles } from './styles'
 const Orders = ({navigation}) => {
   const selectedOrder = useSelector(state => state.orders.selected)
 
-  const dispatcher = useDispatch()
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    dispatcher(ACTIONS.fetchOrders())
-  })
+    dispatch(ACTIONS.fetchOrders())
+  },[])
+
   const onHandleSelect = (item) => {
-    dispatcher(ACTIONS.selectOrder(item.id))
-    console.log(selectedOrder)
+    dispatch(ACTIONS.selectOrder(item.id))
     navigation.navigate('OrderDetail', { selectedOrder })
   }
 

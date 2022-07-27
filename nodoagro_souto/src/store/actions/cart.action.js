@@ -43,8 +43,6 @@ export const confirmCart = (items,total) => {
                 })
             })
         const result= await response.json()
-        console.log(result)
-
         dispatcher({
             type: CLEAR_CART
         })

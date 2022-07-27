@@ -11,22 +11,45 @@ export const styles = StyleSheet.create({
         margin: "4%",
         justifyContent: "space-around",
 
-        backgroundColor: colors.secondary,
+        backgroundColor: colors.primary,
         borderRadius: 25,
     },
     orderSelect: {
-        flex: 0.8,
+        flex: 1,
         justifyContent: "space-around",
-        marginVertical: "4%",
+        flexDirection: "row",
+        
 
     },
-    orderPiece: {
+    orderPieceLeft: {
+        flex:1,
         display: "flex",
         justifyContent: "space-around",
         flexDirection: "row",
         alignItems: "center",
-        fontFamily: 'Lato-Bold',
-        fontSize: "25px",
+        padding:"5%",
+        backgroundColor: colors.purple,
+        borderRadius: 25,
+
+                
+    },
+    orderPieceRight: {
+        flex:0.4,
+        display: "flex",
+        justifyContent: "space-around",
+        flexDirection: "row",
+        alignItems: "center",
+        padding: "5%",
+        backgroundColor: colors.primary,
+        borderRadius: 25,
+
+
         
+
+    },
+    orderText: {
+        fontFamily: 'Lato-Bold',
+        fontSize: 25,
+
     }
 })

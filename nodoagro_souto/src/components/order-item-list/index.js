@@ -1,11 +1,12 @@
 import { FlatList } from 'react-native'
-import { OrderItem } from '../index'
+import {OrderDetail} from '../index'
 import React from 'react'
 
-const OrderList = ({ data, onSelected }) => {
+const OrderItemList = ({ data, onSelected }) => {
 
     const renderOrders = ({ item }) => {
-        return <OrderItem item={item} onSelect={onSelected}/>
+        return <OrderDetail item={item} onSelected={onSelected} />
+
     }
     return (
         <FlatList
@@ -15,4 +16,4 @@ const OrderList = ({ data, onSelected }) => {
     )
 }
 
-export default OrderList
+export default OrderItemList

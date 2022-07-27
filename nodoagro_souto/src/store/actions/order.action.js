@@ -20,7 +20,6 @@ onChildAdded(ordersCollection, (snapshot, prev) => {
         items: snapshot.val().items,
         total: snapshot.val().total
     }
-    console.log(order)
     data.push(order)
 })
 
@@ -38,7 +37,7 @@ export const fetchOrders = () => {
     return async (dispatcher) => {
         try {
 
-            dispatcher({
+            await dispatcher({
                 type: GET_ORDERS,
                 orders: data
             })

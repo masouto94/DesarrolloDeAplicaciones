@@ -50,7 +50,6 @@ export const cartReducer = (state=initialState, action) => {
                 total: state.items.reduce((prev, item) => (prev+item.price)*item.quantity,0 )
             }
         case CONFIRM:
-            console.log(state.confirm)
                 return{
                     ...state,
                     confirm: state.items.length > 0    
