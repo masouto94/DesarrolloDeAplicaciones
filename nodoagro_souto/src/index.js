@@ -1,4 +1,4 @@
-import { init, populateMock, select } from './db'
+import { init, populateMock, selectAllResults } from './db'
 
 import React from 'react'
 import TabNavigator from './navigation/tab-navigator/index'
@@ -15,10 +15,13 @@ init()
   })
 
 
-select()
+selectAllResults("profiles")
   .then((res) => {
     console.log("USUARIOS")
     console.log(res)
+  })
+  .catch((err) => {
+    console.log(err)
   })
 
 const Root = () => {

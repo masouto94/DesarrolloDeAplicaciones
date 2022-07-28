@@ -1,13 +1,19 @@
 import { profileTypes } from '../types/index'
-const {SAVE_PHOTO, DELETE_PHOTO, SAVE_PROFILE} = profileTypes
+const {SAVE_PHOTO, DELETE_PHOTO, SAVE_PROFILE, IS_LOADED} = profileTypes
 const initialState = {
     user_name: "",
     currentPhoto: null,
-    email:""
+    email:"",
+    profile_exists: false
 }
 
 const profileReducer = (state=initialState, action) => {
     switch (action.type) {
+        case IS_LOADED:
+        return{
+            ...state,
+
+        }
         case SAVE_PHOTO:
         return {
             ...state,
@@ -23,7 +29,7 @@ const profileReducer = (state=initialState, action) => {
             return{
                 ...state,
                 user_name: action.user_name,
-                currentPhoto: action.photo,
+                currentPhoto: {uri: action.photo},
                 email: action.email
             }
         default:
