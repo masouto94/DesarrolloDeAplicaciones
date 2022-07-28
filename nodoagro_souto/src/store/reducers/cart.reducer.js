@@ -58,7 +58,8 @@ export const cartReducer = (state=initialState, action) => {
             return {
                 ...state,
                 items: [],
-                total: 0
+                total: 0,
+                confirm:false
             }
         default:
             return state

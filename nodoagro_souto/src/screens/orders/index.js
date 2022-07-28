@@ -9,12 +9,12 @@ import { styles } from './styles'
 
 const Orders = ({navigation}) => {
   const selectedOrder = useSelector(state => state.orders.selected)
-
+  const cartConfirmed = useSelector(state => state.cart.confirm)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(ACTIONS.fetchOrders())
-  },[])
+  }, [cartConfirmed])
 
   const onHandleSelect = (item) => {
     dispatch(ACTIONS.selectOrder(item.id))

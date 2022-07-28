@@ -1,6 +1,6 @@
 import * as FileSystem from 'expo-file-system'
 
-import { countRows, insertProfile, queryResults, selectAllResults } from '../../db/index'
+import { countRows, insertProfile, queryResults, selectAllResults, truncateTable } from '../../db/index'
 
 import { profileTypes } from "../types/index";
 
@@ -33,15 +33,12 @@ export const isLoaded = (user_name, photo, email) => ({
 
 export const loadUser =  () =>{
     return async dispatcher => {
-    console.log("PASE POR ACA")
     const count = await countRows('profiles', 'email').then(
         (res) => parseInt(Object.values(res.rows.item(0))))
-    console.log("ACA ES", count)
     if (count != 0){
         const user = await selectAllResults('profiles').then(
                             (res) => res.rows.item(0))
 
-        console.log("ACA ES", user)
         
             dispatcher(isLoaded(user.user_name,
                                 user.profile_picture,
@@ -74,16 +71,20 @@ export const saveProfilePicture = (photo) => {
     }
 }
 
-export const deleteProfilePicture = () => ({
-    type: DELETE_PHOTO
+export const deletePhoto = () => ({
+    type:DELETE_PHOTO
 })
+export const deleteProfilePicture = () => {
+    return async dispatcher => {
+        await truncateTable('profiles')
+        dispatcher(deletePhoto())
+    }
+}
 
 export const saveUserProfile =  (user_name, photo, email) => {
-    console.log(user_name, photo, email)
     return async dispatcher => {
         await insertProfile(user_name, photo, email)
         photo = await profilePictureMapper(email)
-        console.log("ESTA ES LA PHOTO DE PHOTO", photo)
         dispatcher(saveUser(user_name, photo, email))
         
         

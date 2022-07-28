@@ -10,7 +10,6 @@ const initialState = {
 const profileReducer = (state=initialState, action) => {
     switch (action.type) {
         case IS_LOADED:
-        console.log("DESPACHE LA ACTION")
         return{
             ...state,
             user_name: action.user_name,   
@@ -27,7 +26,8 @@ const profileReducer = (state=initialState, action) => {
         
         case DELETE_PHOTO:
             return {
-                ...state,
+                initialState
+                
             }
         case SAVE_PROFILE:
 

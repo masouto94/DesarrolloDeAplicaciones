@@ -1,12 +1,17 @@
+import React, { useEffect } from "react";
 import { isAndroid, isIos } from "../../constants/utils/index";
 
 import { Profile } from '../../screens'
-import React from "react";
 import {colors} from '../../constants/themes/index'
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useSelector } from "react-redux"
 
 const Stack = createNativeStackNavigator()
 const ProfileNavigator = () => {
+    const userName = useSelector(state => state.profile.user_name)
+    useEffect(() => {
+
+    }, [userName])
     return (
         <Stack.Navigator 
         initialRouteName='Profile'
@@ -26,7 +31,7 @@ const ProfileNavigator = () => {
         component={Profile}
         options={
             {
-                title: "Mi perfil"
+                title:  userName  ? `Perfil de ${userName}` : "Mi perfil"
             }
         }
         />
