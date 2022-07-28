@@ -1,25 +1,30 @@
 import {Button, Image, Text, TextInput, View} from 'react-native'
 import { countRows, queryResults, selectAllResults, truncateTable } from '../../db'
-import { saveProfilePicture, saveUserProfile } from '../../store/actions/index'
+import { loadUser, saveProfilePicture, saveUserProfile } from '../../store/actions/index'
 import {useDispatch, useSelector} from 'react-redux'
 
 import ImageSelector from '../../components/image-selector'
 import React from 'react'
 import { styles } from './styles'
+import { useEffect } from 'react'
 import { useState } from 'react'
 
 const Profile = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const dispatcher = useDispatch()
+  const currentEmail = useSelector(state => state.profile.email)
   const profilePicture = useSelector(state => state.profile.currentPhoto)
+  const profileExists = useSelector(state => state.profile.profileExists)
+  useEffect(() => {
+    dispatcher(loadUser())
+  }, [])
+  
 
-  const ver =  (q) => {
-    selectAllResults('profiles', q)
-      .then((res) => {
-        console.log("SELECTED")
-        console.log(res)
-      })
+  const ver =  async () => {
+    const user = await selectAllResults('profiles')
+      .then((res) => res.rows.item(0))
+      console.log(user)
 
   }
 
@@ -52,12 +57,14 @@ const Profile = () => {
  //Agregar path a photo
   const handleSaveProfile = (name,profilePicture, email) => {
     dispatcher(saveUserProfile(name,profilePicture, email))
+    setEmail("")
+    setName("")
   }
   return (
     <View style={styles.container}>
       <View style={styles.container}>
         {profilePicture
-          ? <Image style={styles.container} source={profilePicture} />
+          ? <Image style={styles.container} source={profilePicture} /> 
           : (<View style={styles.placeHolder}>
               <Text style={styles.placeHolderText}>Seleccione una imagen</Text>
             </View>)
@@ -84,7 +91,7 @@ const Profile = () => {
         <View style={{margin:10}}>
           <Button
           title="VER"
-            onPress={() => contar()}/>
+            onPress={() => ver()}/>
           <Button
             title="BORRAR"
             onPress={() => borrar()} />            

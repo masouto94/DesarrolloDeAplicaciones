@@ -4,16 +4,21 @@ const initialState = {
     user_name: "",
     currentPhoto: null,
     email:"",
-    profile_exists: false
+    profileExists: false
 }
 
 const profileReducer = (state=initialState, action) => {
     switch (action.type) {
         case IS_LOADED:
+        console.log("DESPACHE LA ACTION")
         return{
             ...state,
-
+            user_name: action.user_name,   
+            currentPhoto: {uri:action.photo},
+            email: action.email,
+            profileExists: action.profileExists
         }
+
         case SAVE_PHOTO:
         return {
             ...state,
@@ -30,7 +35,8 @@ const profileReducer = (state=initialState, action) => {
                 ...state,
                 user_name: action.user_name,
                 currentPhoto: {uri: action.photo},
-                email: action.email
+                email: action.email,
+                profileExists:action.profileExists
             }
         default:
             return state
