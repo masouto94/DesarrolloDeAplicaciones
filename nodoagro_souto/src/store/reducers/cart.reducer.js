@@ -2,10 +2,11 @@ import {cartTypes} from '../types'
 
 const initialState = {
     items: [],
-    total: 0
+    total: 0,
+    confirm:false
 }
 
-const {ADD_ITEM, REMOVE_ITEM, CONFIRM, SUM_TOTAL} = cartTypes
+const {ADD_ITEM, REMOVE_ITEM, SUM_TOTAL, CONFIRM, CLEAR_CART} = cartTypes
 
 
 
@@ -47,6 +48,18 @@ export const cartReducer = (state=initialState, action) => {
             return{
                 ...state,
                 total: state.items.reduce((prev, item) => (prev+item.price)*item.quantity,0 )
+            }
+        case CONFIRM:
+                return{
+                    ...state,
+                    confirm: state.items.length > 0    
+            }
+        case CLEAR_CART:
+            return {
+                ...state,
+                items: [],
+                total: 0,
+                confirm:false
             }
         default:
             return state

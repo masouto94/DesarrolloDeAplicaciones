@@ -1,22 +1,42 @@
 import { profileTypes } from '../types/index'
-
-const {SAVE_PHOTO, DELETE_PHOTO} = profileTypes
-const defaultPicture = {uri:'../../images/no-foto.png'}
+const {SAVE_PHOTO, DELETE_PHOTO, SAVE_PROFILE, IS_LOADED} = profileTypes
 const initialState = {
-    current:   defaultPicture
+    user_name: "",
+    currentPhoto: null,
+    email:"",
+    profileExists: false
 }
 
 const profileReducer = (state=initialState, action) => {
     switch (action.type) {
+        case IS_LOADED:
+        return{
+            ...state,
+            user_name: action.user_name,   
+            currentPhoto: {uri:action.photo},
+            email: action.email,
+            profileExists: action.profileExists
+        }
+
         case SAVE_PHOTO:
         return {
             ...state,
-            current: {uri:action.photo}
+            currentPhoto: {uri:action.photo}
         }
         
         case DELETE_PHOTO:
             return {
+                initialState
+                
+            }
+        case SAVE_PROFILE:
+
+            return{
                 ...state,
+                user_name: action.user_name,
+                currentPhoto: {uri: action.photo},
+                email: action.email,
+                profileExists:action.profileExists
             }
         default:
             return state

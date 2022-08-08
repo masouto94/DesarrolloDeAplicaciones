@@ -6,13 +6,17 @@ import {useDispatch, useSelector} from 'react-redux'
 import { CartItem } from '../../components/index'
 import React from 'react'
 import { styles } from './styles'
+import { useEffect } from 'react'
 
 const Cart = () => {
   const dispatcher = useDispatch()
   const items= useSelector(state => state.cart.items) 
-
   const total = useSelector(state => state.cart.total)
-  
+  const canConfirm = useSelector(state => state.cart.confirm)
+
+  useEffect(() =>{
+    dispatcher(ACTIONS.checkCart())
+  })
   const onHandleDeleteCart = (id) => {
     dispatcher(ACTIONS.removeFromCart(id))
     dispatcher(ACTIONS.sumTotalPriceInCart())
@@ -20,7 +24,12 @@ const Cart = () => {
   }
 
   const onHandleConfirmCart = () => {
-    dispatcher(ACTIONS.confirmCart(items,total))
+    
+    if (!canConfirm){
+      alert("No hay nada cargado")
+      return
+    }
+    dispatcher(ACTIONS.confirmCart(items, total))
   }
 
   const renderItem = ({item}) =>{

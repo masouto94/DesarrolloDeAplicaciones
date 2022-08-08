@@ -3,4 +3,5 @@ export const cartTypes = {
     REMOVE_ITEM: 'REMOVE_ITEM',
     SUM_TOTAL: 'SUM_TOTAL',
     CONFIRM : 'CONFIRM',
+    CLEAR_CART: 'CLEAR_CART'
 }

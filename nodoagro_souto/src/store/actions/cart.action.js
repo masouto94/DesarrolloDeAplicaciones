@@ -1,6 +1,6 @@
 import { API_URL } from "../../constants/firebase/firebase";
 import { cartTypes } from "../types";
-const {ADD_ITEM, REMOVE_ITEM, CONFIRM, SUM_TOTAL} = cartTypes
+const {ADD_ITEM, REMOVE_ITEM, CONFIRM, SUM_TOTAL, CLEAR_CART} = cartTypes
 
 
 export const addToCart = (item) => {
@@ -22,9 +22,15 @@ export const sumTotalPriceInCart = () => {
     })
 }
 
+export const checkCart = () =>{
+    return({
+        type: CONFIRM
+    })
+}
 export const confirmCart = (items,total) => {
     return async (dispatcher) => {
         try{
+
             const response = await fetch(`${API_URL}/orders.json`, {
                 method: "POST",
                 headers:{
@@ -37,10 +43,8 @@ export const confirmCart = (items,total) => {
                 })
             })
         const result= await response.json()
-        console.log(result)
         dispatcher({
-            type: CONFIRM,
-            confirm:true
+            type: CLEAR_CART
         })
     } catch  (error){
         console.log(error.message)

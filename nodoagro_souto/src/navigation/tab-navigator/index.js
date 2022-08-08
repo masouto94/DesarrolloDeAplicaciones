@@ -24,13 +24,14 @@ const LabelBottomTab = (focused, label) => (
     }}>{label}</Text>
 )
 const TabNavigator = () => {
-    
+    const allOrders = useSelector(state => state.orders.all)
+    const hasOrders = useSelector(state => state.orders.any)
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(ACTIONS.fetchOrders())
         dispatch(ACTIONS.anyLoadedOrder())
-      }, [])
+      }, [allOrders])
 
-    const hasOrders = useSelector(state => state.orders.any)
     const ordersTrayIcons = hasOrders ? "file-tray-full" : "file-tray"
   return (
     <NavigationContainer>
