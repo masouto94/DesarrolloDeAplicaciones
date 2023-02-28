@@ -9,6 +9,7 @@ import MainNavigator from '../main-navigator/index'
 import { NavigationContainer } from '@react-navigation/native'
 import OrdersNavigator from '../orders-navigator/index'
 import ProfileNavigator from '../profile-navigator'
+import HomeNavigator from '../home-navigator'
 import React from 'react'
 import { colors } from '../../constants/themes'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -42,6 +43,22 @@ const TabNavigator = () => {
         tabBarStyle: styles.tabBar
     }}
     >
+        <BottomTabs.Screen
+        name='Inicio'
+        component={HomeNavigator}
+        options={{
+            tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Inicio'),
+            tabBarIcon: ({focused}) => (
+                <View style={styles.container}>
+                    <Ionicons name={focused ? "home-sharp" : "home-outline"}
+                    size={32}
+                    color={focused ? colors.secondary : colors.primary}/>
+                </View>
+            )
+        }}
+
+        />
+
 
         <BottomTabs.Screen
         name='Tienda'
