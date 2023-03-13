@@ -1,6 +1,6 @@
 import { authTypes } from "../types";
 
-const {LOGIN, LOGOUT} = authTypes
+const {LOGIN, LOGOUT, CLIENT_TYPE} = authTypes
 
 export const userLogin = (user) => {
     return({
@@ -13,5 +13,12 @@ export const userLogout = (user) => {
     return({
         type: LOGOUT,
         user : user
+    })
+}
+
+export const selectClientType = (clientType) => {
+    return({
+        type:CLIENT_TYPE,
+        clientType: clientType
     })
 }

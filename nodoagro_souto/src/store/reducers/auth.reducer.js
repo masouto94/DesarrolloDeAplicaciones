@@ -2,9 +2,10 @@ import {authTypes} from '../types'
 
 const initialState = {
     authenticated: false,
+    clientType: undefined
     }
 
-const {LOGIN, LOGOUT} = authTypes
+const {LOGIN, LOGOUT, CLIENT_TYPE} = authTypes
 
 
 
@@ -24,6 +25,13 @@ export const authReducer = (state=initialState, action) => {
             return{
                 ...state,
                 authenticated: false
+            }
+
+        case CLIENT_TYPE:
+            let selectedClient = action.clientType
+            return{
+                ...state,
+                clientType: selectedClient
             }
 
         default:

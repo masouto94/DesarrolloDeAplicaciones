@@ -3,14 +3,14 @@ import { styles } from "./styles"
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react"
 import * as ACTIONS from '../../store/actions/index'
-
-
+import ClientTypeSelector from "../../components/auth/client-type/index"
+import CLIENT_TYPES from '../../constants/mock_data/index'
 
 const Auth = () => {
     const image = require('../../images/backgrounds/home_background.png')
     const logo = require('../../images/backgrounds/logo.png')
     const dispatch = useDispatch()
-
+    const selectedClientType = useSelector((state) => state.auth.clientType)
 
     const onLogin = (user) => {
         dispatch(ACTIONS.userLogin(user))
@@ -22,6 +22,15 @@ const Auth = () => {
 
     }
     const [user, setUser] = useState('')
+
+    const selectUser = (clientType) =>{
+        dispatch(ACTIONS.selectClientType(clientType))
+    }
+    if(!selectedClientType){
+        return(
+            <ClientTypeSelector clientType={CLIENT_TYPES} onPress={selectUser}/>
+        )
+    }
     return (
         <View style={styles.container}>
             <ImageBackground source={image} resizeMode="stretch" style={styles.image}>
