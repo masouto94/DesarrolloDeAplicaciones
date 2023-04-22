@@ -21,7 +21,7 @@ export const authReducer = (state=initialState, action) => {
             
         case LOGOUT:
             let userToLogout = action.user
-            console.log(`El usuario a loguear es: ${userToLogout}`)
+            console.log(`El usuario a desloguear es: ${userToLogout}`)
             return{
                 ...state,
                 authenticated: false

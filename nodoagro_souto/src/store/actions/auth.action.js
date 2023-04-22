@@ -16,9 +16,9 @@ export const userLogout = (user) => {
     })
 }
 
-export const selectClientType = (clientType) => {
+export const selectClientType = (type) => {
     return({
         type:CLIENT_TYPE,
-        clientType: clientType
+        clientType: type
     })
 }

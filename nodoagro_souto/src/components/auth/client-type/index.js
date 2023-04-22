@@ -1,22 +1,35 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, FlatList } from 'react-native'
 import React from 'react'
 import { styles } from './styles'
-const ClientTypeSelector = ({ clientType, onPress }) => {
-  
+import { useDispatch, useSelector } from 'react-redux'
+import * as ACTIONS from '../../../store/actions/index'
+
+import * as TYPES from '../../../constants/mock_data/index'
+
+const ClientTypeSelector = () => {
+  const dispatch = useDispatch()
+  const selected = useSelector((state) => state.auth.selectClientType)
+  const selectUser = (clientType) =>{
+    dispatch(ACTIONS.selectClientType(clientType))
+    console.log(selected)
+  }
 
   const renderClientType = ({ item }) => {
-    <View style={styles.cartContainer}>
-      <TouchableOpacity onPress={onPress(item.name)}>
+    return(
+    <View style={styles.container}>
+      <TouchableOpacity onPress={() => selectUser(item.name)}>
         <Text>Soy {item.label}</Text>
       </TouchableOpacity>
     </View>
+    )
   }
   return (
+    <View>
     <FlatList
-      data={clientType}
+      data={TYPES.CLIENT_TYPES}
       keyExtractor={(item) => item.id}
       renderItem={renderClientType} />
-
+    </View>
 
   )
 }
