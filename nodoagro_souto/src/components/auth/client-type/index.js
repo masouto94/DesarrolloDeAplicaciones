@@ -16,9 +16,9 @@ const ClientTypeSelector = () => {
 
   const renderClientType = ({ item }) => {
     return(
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => selectUser(item.name)}>
-        <Text>Soy {item.label}</Text>
+    <View style={styles.clientTypeList}>
+      <TouchableOpacity onPress={() => selectUser(item.name)} >
+        <Text  style={styles.textMenu}>Soy {(item.label).toLowerCase()}</Text>
       </TouchableOpacity>
     </View>
     )

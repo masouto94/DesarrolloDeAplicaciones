@@ -8,5 +8,6 @@ export const colors = {
     black: '#000000',
     gray: '#fdfdfd',
     red: '#F32424',
-    purple: '#9772FB'
+    purple: '#9772FB',
+    itemGreen: '#23A638'
 }

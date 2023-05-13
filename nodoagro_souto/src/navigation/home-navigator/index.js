@@ -25,7 +25,7 @@ const HomeNavigator = () => {
             }
       }>
         <Stack.Screen
-        name='Inicio' 
+        name='HomeScreen' 
         component={Home}
         
         />

@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react"
 import * as ACTIONS from '../../../store/actions/index'
 import * as TYPES  from '../../../constants/mock_data/index'
+import ClientAuth from "../client-types-auth/ClientAuth"
 
 const AuthScreen = () => {
     const dispatch = useDispatch()
     const selectedClientType = useSelector((state) => state.auth.clientType)
-
     const onLogin = (user) => {
         dispatch(ACTIONS.userLogin(user))
 
@@ -19,6 +19,12 @@ const AuthScreen = () => {
 
     }
     const [user, setUser] = useState('')
+    switch (selectedClientType) {
+        case 'client':
+            return <ClientAuth/>    
+        default:
+            break;
+    }
     return (
     <View>
         <View>
