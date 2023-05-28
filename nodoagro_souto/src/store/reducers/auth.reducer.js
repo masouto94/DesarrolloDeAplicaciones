@@ -2,6 +2,7 @@ import {authTypes} from '../types'
 
 const initialState = {
     authenticated: false,
+    currentUser: undefined,
     clientType: undefined
     }
 
@@ -16,15 +17,18 @@ export const authReducer = (state=initialState, action) => {
             console.log(`El usuario a loguear es: ${userToLogin}`)
             return{
                 ...state,
+                currentUser: userToLogin,
                 authenticated: true
             }
             
         case LOGOUT:
-            let userToLogout = action.user
+            let userToLogout = state.currentUser
             console.log(`El usuario a desloguear es: ${userToLogout}`)
             return{
                 ...state,
-                authenticated: false
+                authenticated: false,
+                currentUser: undefined,
+                clientType: undefined
             }
 
         case CLIENT_TYPE:

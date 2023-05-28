@@ -50,7 +50,7 @@ const TabNavigator = () => {
             tabBarLabel: ({focused}) => LabelBottomTab(focused, 'Inicio'),
             tabBarIcon: ({focused}) => (
                 <View style={styles.container}>
-                    <Ionicons name={focused ? "home-sharp" : "home-outline"}
+                    <Ionicons name={focused ? "leaf-sharp" : "leaf-outline"}
                     size={32}
                     color={focused ? colors.secondary : colors.primary}/>
                 </View>

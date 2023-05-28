@@ -27,6 +27,7 @@ const HomeNavigator = () => {
         <Stack.Screen
         name='HomeScreen' 
         component={Home}
+        options={{ title: 'Página principal' }}
         
         />
     </Stack.Navigator>
