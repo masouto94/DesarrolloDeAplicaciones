@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
         right: '90%',
         top: '6.25%',
         bottom: '91.75%',
+        zIndex:1
 
         
     },

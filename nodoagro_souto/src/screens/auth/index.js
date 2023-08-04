@@ -14,12 +14,12 @@ const Auth = () => {
     const selectedClientType = useSelector((state) => state.auth.clientType)
     const dispatch = useDispatch()
 
-    useEffect(
-        ()=>{
+    // useEffect(
+    //     ()=>{
             
-            dispatch(ACTIONS.selectClientType('client'))
-        }
-    )
+    //         dispatch(ACTIONS.selectClientType('client'))
+    //     }
+    // )
     return (
         <View style={styles.container}>
             <ImageBackground source={image} resizeMode="stretch" style={styles.background}>
@@ -27,7 +27,8 @@ const Auth = () => {
             
             <View style={styles.arrowBackContainer}>
                 <TouchableOpacity 
-                style={styles.circleContainer}>
+                style={styles.circleContainer}
+                onPress={() =>dispatch(ACTIONS.selectClientType(undefined))}>
                     <Ionicons  style={styles.arrowBack} name={"arrow-back"}/>
                 </TouchableOpacity>
                 

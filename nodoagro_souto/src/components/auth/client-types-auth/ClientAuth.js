@@ -43,12 +43,12 @@ const ClientAuth = () => {
 
 
     const [userPhone, setUserPhone] = useState('')
-    useEffect(
-        ()=>{
-            setUserPhone(1122334455)       
-            validateUserPhone(userPhone, onLogin)
-        }
-    )
+    // useEffect(
+    //     ()=>{
+    //         setUserPhone(1122334455)       
+    //         validateUserPhone(userPhone, onLogin)
+    //     }
+    // )
     return (
         <View style={styles.container}>
             <View>
